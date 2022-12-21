@@ -19,7 +19,7 @@ func dbInit() {
 		panic(err.Error())
 	}
 
-	_, err = db.Exec("CREATE DATABASE webapp") //
+	_, err = db.Exec("CREATE DATABASE webapp")
 	if err != nil {
 		panic(err.Error())
 	}
