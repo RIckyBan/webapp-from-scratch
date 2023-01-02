@@ -9,8 +9,11 @@ type User struct {
 	Address string
 }
 
-func NewUser(id ulid.ULID) *User {
+func NewUser(id ulid.ULID, name, email, address string) *User {
 	return &User{
-		ID: id,
+		ID:      id,
+		Name:    name,
+		Email:   email,
+		Address: address,
 	}
 }

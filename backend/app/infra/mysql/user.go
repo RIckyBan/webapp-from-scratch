@@ -34,6 +34,9 @@ func (r userRepository) GetAllUsers(ctx context.Context) ([]*entity.User, error)
 
 		users = append(users, entity.NewUser(
 			userID,
+			u.Name,
+			u.Email,
+			u.Address,
 		))
 	}
 
