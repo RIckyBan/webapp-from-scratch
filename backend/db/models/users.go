@@ -23,42 +23,37 @@ import (
 
 // User is an object representing the database table.
 type User struct {
-	ID       string `boil:"id" json:"id" toml:"id" yaml:"id"`
-	Name     string `boil:"name" json:"name" toml:"name" yaml:"name"`
-	Email    string `boil:"email" json:"email" toml:"email" yaml:"email"`
-	Password string `boil:"password" json:"password" toml:"password" yaml:"password"`
-	Address  string `boil:"address" json:"address" toml:"address" yaml:"address"`
+	ID      string `boil:"id" json:"id" toml:"id" yaml:"id"`
+	Name    string `boil:"name" json:"name" toml:"name" yaml:"name"`
+	Email   string `boil:"email" json:"email" toml:"email" yaml:"email"`
+	Address string `boil:"address" json:"address" toml:"address" yaml:"address"`
 
 	R *userR `boil:"-" json:"-" toml:"-" yaml:"-"`
 	L userL  `boil:"-" json:"-" toml:"-" yaml:"-"`
 }
 
 var UserColumns = struct {
-	ID       string
-	Name     string
-	Email    string
-	Password string
-	Address  string
+	ID      string
+	Name    string
+	Email   string
+	Address string
 }{
-	ID:       "id",
-	Name:     "name",
-	Email:    "email",
-	Password: "password",
-	Address:  "address",
+	ID:      "id",
+	Name:    "name",
+	Email:   "email",
+	Address: "address",
 }
 
 var UserTableColumns = struct {
-	ID       string
-	Name     string
-	Email    string
-	Password string
-	Address  string
+	ID      string
+	Name    string
+	Email   string
+	Address string
 }{
-	ID:       "users.id",
-	Name:     "users.name",
-	Email:    "users.email",
-	Password: "users.password",
-	Address:  "users.address",
+	ID:      "users.id",
+	Name:    "users.name",
+	Email:   "users.email",
+	Address: "users.address",
 }
 
 // Generated where
@@ -87,17 +82,15 @@ func (w whereHelperstring) NIN(slice []string) qm.QueryMod {
 }
 
 var UserWhere = struct {
-	ID       whereHelperstring
-	Name     whereHelperstring
-	Email    whereHelperstring
-	Password whereHelperstring
-	Address  whereHelperstring
+	ID      whereHelperstring
+	Name    whereHelperstring
+	Email   whereHelperstring
+	Address whereHelperstring
 }{
-	ID:       whereHelperstring{field: "`users`.`id`"},
-	Name:     whereHelperstring{field: "`users`.`name`"},
-	Email:    whereHelperstring{field: "`users`.`email`"},
-	Password: whereHelperstring{field: "`users`.`password`"},
-	Address:  whereHelperstring{field: "`users`.`address`"},
+	ID:      whereHelperstring{field: "`users`.`id`"},
+	Name:    whereHelperstring{field: "`users`.`name`"},
+	Email:   whereHelperstring{field: "`users`.`email`"},
+	Address: whereHelperstring{field: "`users`.`address`"},
 }
 
 // UserRels is where relationship names are stored.
@@ -117,8 +110,8 @@ func (*userR) NewStruct() *userR {
 type userL struct{}
 
 var (
-	userAllColumns            = []string{"id", "name", "email", "password", "address"}
-	userColumnsWithoutDefault = []string{"id", "name", "email", "password", "address"}
+	userAllColumns            = []string{"id", "name", "email", "address"}
+	userColumnsWithoutDefault = []string{"id", "name", "email", "address"}
 	userColumnsWithDefault    = []string{}
 	userPrimaryKeyColumns     = []string{"id"}
 	userGeneratedColumns      = []string{}
