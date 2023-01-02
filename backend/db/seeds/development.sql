@@ -1,23 +1,12 @@
-INSERT INTO users (name, email, password, birth_date)
+INSERT INTO users (id, name, email, address)
 VALUES
-('John Smith', 'john@example.com', 'password', '1980-01-01'),
-('Jane Doe', 'jane@example.com', 'password', '1985-07-15'),
-('Bill Johnson', 'bill@example.com', 'password', '1990-03-20'),
-('Emily Williams', 'emily@example.com', 'password', '1995-09-25'),
-('James Brown', 'james@example.com', 'password', '2000-02-01'),
-('Emily Davis', 'emilyd@example.com', 'password', '2005-08-01'),
-('Benjamin Jones', 'benjamin@example.com', 'password', '1975-06-01'),
-('Jessica Thompson', 'jessica@example.com', 'password', '1985-02-01'),
-('Michael Anderson', 'michael@example.com', 'password', '1995-05-01'),
-('Samantha Taylor', 'samantha@example.com', 'password', '2000-11-01');
-
-01D8KJN23A7GZJYGZHJ2K1YXR9,Alice,alice@example.com,Tokyo
-01D8KJN23A7GZJYGZHJ2K1YXR9,Bob,bob@example.com,Osaka
-01D8KJN23A7GZJYGZHJ2K1YXR9,Charlie,charlie@example.com,Nagoya
-01D8KJN23A7GZJYGZHJ2K1YXR9,Dave,dave@example.com,Fukuoka
-01D8KJN23A7GZJYGZHJ2K1YXR9,Eve,eve@example.com,Sapporo
-01D8KJN23A7GZJYGZHJ2K1YXR9,Frank,frank@example.com,Kyoto
-01D8KJN23A7GZJYGZHJ2K1YXR9,Grace,grace@example.com,Okinawa
-01D8KJN23A7GZJYGZHJ2K1YXR9,Henry,henry@example.com,Hiroshima
-01D8KJN23A7GZJYGZHJ2K1YXR9,Ivan,ivan@example.com,Yokohama
-01D8KJN23A7GZJYGZHJ2K1YXR9,James,james@example.com,Kobe
+('01GNS932E8GS10DN1940AJY3WH','Alice','alice@example.com','Tokyo'),
+('01GNS94FBKDSXV6HNQC53RF3A9','Bob','bob@example.com','Osaka'),
+('01GNS94M399RBCT0PW7N4RP5RY','Charlie','charlie@example.com','Nagoya'),
+('01GNS94S8DJQY8R6Q4DMTD0CD1','Dave','dave@example.com','Fukuoka'),
+('01GNS94Y2PBPA5MSF5YRNFPQ8J','Eve','eve@example.com','Sapporo'),
+('01GNS952JHV91BF7HCQ3PXS021','Frank','frank@example.com','Kyoto'),
+('01GNS957CYC0EHHJXNAJZ6RD2R','Grace','grace@example.com','Okinawa'),
+('01GNS95CGQRW033S2RVAFED4NH','Henry','henry@example.com','Hiroshima'),
+('01GNS95JDD9HF64NKZYE2GQ4W9','Ivan','ivan@example.com','Yokohama'),
+('01GNS95QG9NDYB8QQ7ZMVT52N5','James','james@example.com','Kobe');
