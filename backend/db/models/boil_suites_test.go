@@ -12,50 +12,63 @@ import "testing"
 // It does NOT run each operation group in parallel.
 // Separating the tests thusly grants avoidance of Postgres deadlocks.
 func TestParent(t *testing.T) {
+	t.Run("Users", testUsers)
 	t.Run("Webapps", testWebapps)
 }
 
 func TestDelete(t *testing.T) {
+	t.Run("Users", testUsersDelete)
 	t.Run("Webapps", testWebappsDelete)
 }
 
 func TestQueryDeleteAll(t *testing.T) {
+	t.Run("Users", testUsersQueryDeleteAll)
 	t.Run("Webapps", testWebappsQueryDeleteAll)
 }
 
 func TestSliceDeleteAll(t *testing.T) {
+	t.Run("Users", testUsersSliceDeleteAll)
 	t.Run("Webapps", testWebappsSliceDeleteAll)
 }
 
 func TestExists(t *testing.T) {
+	t.Run("Users", testUsersExists)
 	t.Run("Webapps", testWebappsExists)
 }
 
 func TestFind(t *testing.T) {
+	t.Run("Users", testUsersFind)
 	t.Run("Webapps", testWebappsFind)
 }
 
 func TestBind(t *testing.T) {
+	t.Run("Users", testUsersBind)
 	t.Run("Webapps", testWebappsBind)
 }
 
 func TestOne(t *testing.T) {
+	t.Run("Users", testUsersOne)
 	t.Run("Webapps", testWebappsOne)
 }
 
 func TestAll(t *testing.T) {
+	t.Run("Users", testUsersAll)
 	t.Run("Webapps", testWebappsAll)
 }
 
 func TestCount(t *testing.T) {
+	t.Run("Users", testUsersCount)
 	t.Run("Webapps", testWebappsCount)
 }
 
 func TestHooks(t *testing.T) {
+	t.Run("Users", testUsersHooks)
 	t.Run("Webapps", testWebappsHooks)
 }
 
 func TestInsert(t *testing.T) {
+	t.Run("Users", testUsersInsert)
+	t.Run("Users", testUsersInsertWhitelist)
 	t.Run("Webapps", testWebappsInsert)
 	t.Run("Webapps", testWebappsInsertWhitelist)
 }
@@ -101,21 +114,26 @@ func TestToManySet(t *testing.T) {}
 func TestToManyRemove(t *testing.T) {}
 
 func TestReload(t *testing.T) {
+	t.Run("Users", testUsersReload)
 	t.Run("Webapps", testWebappsReload)
 }
 
 func TestReloadAll(t *testing.T) {
+	t.Run("Users", testUsersReloadAll)
 	t.Run("Webapps", testWebappsReloadAll)
 }
 
 func TestSelect(t *testing.T) {
+	t.Run("Users", testUsersSelect)
 	t.Run("Webapps", testWebappsSelect)
 }
 
 func TestUpdate(t *testing.T) {
+	t.Run("Users", testUsersUpdate)
 	t.Run("Webapps", testWebappsUpdate)
 }
 
 func TestSliceUpdateAll(t *testing.T) {
+	t.Run("Users", testUsersSliceUpdateAll)
 	t.Run("Webapps", testWebappsSliceUpdateAll)
 }
