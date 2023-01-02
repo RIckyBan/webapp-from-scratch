@@ -5,7 +5,7 @@ migrate-down:
 	cd ./db && sql-migrate down
 
 generate-models:
-	sqlboiler mysql --output ./db/models
+	cd ./db && sqlboiler mysql --output ./models
 
 server:
 	go run main.go
