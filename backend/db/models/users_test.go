@@ -15,57 +15,6 @@ import (
 	"github.com/volatiletech/strmangle"
 )
 
-func testUsersUpsert(t *testing.T) {
-	t.Parallel()
-
-	if len(userAllColumns) == len(userPrimaryKeyColumns) {
-		t.Skip("Skipping table with only primary key columns")
-	}
-	if len(mySQLUserUniqueColumns) == 0 {
-		t.Skip("Skipping table with no unique columns to conflict on")
-	}
-
-	seed := randomize.NewSeed()
-	var err error
-	// Attempt the INSERT side of an UPSERT
-	o := User{}
-	if err = randomize.Struct(seed, &o, userDBTypes, false); err != nil {
-		t.Errorf("Unable to randomize User struct: %s", err)
-	}
-
-	ctx := context.Background()
-	tx := MustTx(boil.BeginTx(ctx, nil))
-	defer func() { _ = tx.Rollback() }()
-	if err = o.Upsert(ctx, tx, boil.Infer(), boil.Infer()); err != nil {
-		t.Errorf("Unable to upsert User: %s", err)
-	}
-
-	count, err := Users().Count(ctx, tx)
-	if err != nil {
-		t.Error(err)
-	}
-	if count != 1 {
-		t.Error("want one record, got:", count)
-	}
-
-	// Attempt the UPDATE side of an UPSERT
-	if err = randomize.Struct(seed, &o, userDBTypes, false, userPrimaryKeyColumns...); err != nil {
-		t.Errorf("Unable to randomize User struct: %s", err)
-	}
-
-	if err = o.Upsert(ctx, tx, boil.Infer(), boil.Infer()); err != nil {
-		t.Errorf("Unable to upsert User: %s", err)
-	}
-
-	count, err = Users().Count(ctx, tx)
-	if err != nil {
-		t.Error(err)
-	}
-	if count != 1 {
-		t.Error("want one record, got:", count)
-	}
-}
-
 var (
 	// Relationships sometimes use the reflection helper queries.Equal/queries.Assign
 	// so force a package dependency in case they don't.
@@ -731,5 +680,56 @@ func testUsersSliceUpdateAll(t *testing.T) {
 		t.Error(err)
 	} else if rowsAff != 1 {
 		t.Error("wanted one record updated but got", rowsAff)
+	}
+}
+
+func testUsersUpsert(t *testing.T) {
+	t.Parallel()
+
+	if len(userAllColumns) == len(userPrimaryKeyColumns) {
+		t.Skip("Skipping table with only primary key columns")
+	}
+	if len(mySQLUserUniqueColumns) == 0 {
+		t.Skip("Skipping table with no unique columns to conflict on")
+	}
+
+	seed := randomize.NewSeed()
+	var err error
+	// Attempt the INSERT side of an UPSERT
+	o := User{}
+	if err = randomize.Struct(seed, &o, userDBTypes, false); err != nil {
+		t.Errorf("Unable to randomize User struct: %s", err)
+	}
+
+	ctx := context.Background()
+	tx := MustTx(boil.BeginTx(ctx, nil))
+	defer func() { _ = tx.Rollback() }()
+	if err = o.Upsert(ctx, tx, boil.Infer(), boil.Infer()); err != nil {
+		t.Errorf("Unable to upsert User: %s", err)
+	}
+
+	count, err := Users().Count(ctx, tx)
+	if err != nil {
+		t.Error(err)
+	}
+	if count != 1 {
+		t.Error("want one record, got:", count)
+	}
+
+	// Attempt the UPDATE side of an UPSERT
+	if err = randomize.Struct(seed, &o, userDBTypes, false, userPrimaryKeyColumns...); err != nil {
+		t.Errorf("Unable to randomize User struct: %s", err)
+	}
+
+	if err = o.Upsert(ctx, tx, boil.Infer(), boil.Infer()); err != nil {
+		t.Errorf("Unable to upsert User: %s", err)
+	}
+
+	count, err = Users().Count(ctx, tx)
+	if err != nil {
+		t.Error(err)
+	}
+	if count != 1 {
+		t.Error("want one record, got:", count)
 	}
 }

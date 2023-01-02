@@ -1,4 +1,4 @@
-package main
+package db
 
 import (
 	"database/sql"
@@ -26,13 +26,22 @@ func createDSN() (string, error) {
 	return dsn, nil
 }
 
-func dbInit() error {
+func OpenDB() (*sql.DB, error) {
 	dsn, err := createDSN()
 	if err != nil {
-		return err
+		return nil, err
 	}
 
 	db, err := sql.Open("mysql", dsn)
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
+
+func initDB() error {
+	db, err := OpenDB()
 	if err != nil {
 		return err
 	}
@@ -53,7 +62,7 @@ func dbInit() error {
 }
 
 func main() {
-	err := dbInit()
+	err := initDB()
 	if err != nil {
 		panic(err.Error())
 	}
