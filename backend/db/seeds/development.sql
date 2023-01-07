@@ -1,14 +1,14 @@
 INSERT INTO users (id, name, email, birthday, admin) VALUES
-    ('01GNS932E8GS10DN1940AJY3WH','John Smith', 'john@example.com', '1980-01-01',),
-    ('01GNS94FBKDSXV6HNQC53RF3A9','Alice Johnson', 'alice@example.com', '1985-02-14',),
-    ('01GNS94M399RBCT0PW7N4RP5RY','Bob Williams', 'bob@example.com', '1970-05-30',),
-    ('01GNS94S8DJQY8R6Q4DMTD0CD1','Eve Davis', 'eve@example.com', '1995-08-08',),
-    ('01GNS94Y2PBPA5MSF5YRNFPQ8J','Michael Brown', 'michael@example.com', '1990-11-11',),
-    ('01GNS952JHV91BF7HCQ3PXS021','Sara Taylor', 'sara@example.com', '1975-07-07'),
-    ('01GNS957CYC0EHHJXNAJZ6RD2R','William Anderson', 'william@example.com', '1985-09-21',),
-    ('01GNS95CGQRW033S2RVAFED4NH','Emma Thompson', 'emma@example.com', '1980-12-12',),
-    ('01GNS95JDD9HF64NKZYE2GQ4W9','James Moore', 'james@example.com', '1995-03-03',),
-    ('01GNS95QG9NDYB8QQ7ZMVT52N5', 'Olivia Jackson', 'olivia@example.com', '1985-06-06',);
+    ('01GNS932E8GS10DN1940AJY3WH','John Smith', 'john@example.com', '1980-01-01', 0),
+    ('01GNS94FBKDSXV6HNQC53RF3A9','Alice Johnson', 'alice@example.com', '1985-02-14', 0),
+    ('01GNS94M399RBCT0PW7N4RP5RY','Bob Williams', 'bob@example.com', '1970-05-30', 0),
+    ('01GNS94S8DJQY8R6Q4DMTD0CD1','Eve Davis', 'eve@example.com', '1995-08-08', 0),
+    ('01GNS94Y2PBPA5MSF5YRNFPQ8J','Michael Brown', 'michael@example.com', '1990-11-11', 0),
+    ('01GNS952JHV91BF7HCQ3PXS021','Sara Taylor', 'sara@example.com', '1975-07-07', 0),
+    ('01GNS957CYC0EHHJXNAJZ6RD2R','William Anderson', 'william@example.com', '1985-09-21', 0),
+    ('01GNS95CGQRW033S2RVAFED4NH','Emma Thompson', 'emma@example.com', '1980-12-12', 0),
+    ('01GNS95JDD9HF64NKZYE2GQ4W9','James Moore', 'james@example.com', '1995-03-03', 0),
+    ('01GNS95QG9NDYB8QQ7ZMVT52N5', 'Olivia Jackson', 'olivia@example.com', '1985-06-06', 0);
 
 INSERT INTO phones (id, brand, model, operating_system, storage_gb, ram_gb, color, screen_size_inch, weight_g, price, release_date, description) VALUES
     ('01D9G0W5ZC9FBM5R5E5J5H5K5F', 'Apple', 'iPhone X', 'iOS 11', 256, 3, 'Space Gray', 5.8, 174, 999, '2017-11-03', 'The iPhone X features a sleek design with a 5.8-inch Super Retina display, Face ID, and dual 12-megapixel rear cameras.'),
