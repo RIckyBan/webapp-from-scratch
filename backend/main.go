@@ -1,15 +1,33 @@
 package main
 
 import (
-	"net/http"
-
+	"github.com/RIckyBan/webapp-from-scratch/backend/app/handler"
+	"github.com/RIckyBan/webapp-from-scratch/backend/app/infra/mysql"
+	"github.com/RIckyBan/webapp-from-scratch/backend/app/usecase"
+	"github.com/RIckyBan/webapp-from-scratch/backend/db"
 	"github.com/labstack/echo/v4"
+	"github.com/labstack/echo/v4/middleware"
 )
 
 func main() {
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.Logger.Fatal(e.Start(":1323"))
+
+	// Middleware
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	db, err := db.OpenDB()
+	if err != nil {
+		panic(err)
+	}
+
+	ur := mysql.NewUserRepository(db)
+	uu := usecase.NewAdminService(ur)
+	ah := handler.NewAdminHandler(uu)
+
+	// admin
+	e.GET("/admin/users", ah.HandleGetAllUsers)
+
+	// Start server
+	e.Logger.Fatal(e.Start(":5001"))
 }
