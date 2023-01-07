@@ -5,7 +5,7 @@ CREATE TABLE users (
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
     birthday DATE NOT NULL,
-    admin BOOLEAN default false
+    admin BOOLEAN default false NOT NULL
 );
 
 -- +migrate Down
