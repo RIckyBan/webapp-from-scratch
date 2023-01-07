@@ -1,15 +1,15 @@
 NAME = foo
 
-migrate-up:
+db-migrate-up:
 	cd ./db && sql-migrate up
 
-migrate-down:
+db-migrate-down:
 	cd ./db && sql-migrate down
 
-migrate-new:
+db-migrate-new:
 	cd ./db && sql-migrate new ${NAME}
 
-import-seed:
+db-import-seed:
 	docker compose -f docker-compose.yml exec db bash -c "mysql -u user -ppassword webapp < /webapp/db/seeds/development.sql"
 
 generate-models:

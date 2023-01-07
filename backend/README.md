@@ -9,6 +9,6 @@ $ cp .env.local .env
 
 2. init db
 ```
-$ cd ./db
-$ sql-migrate up
+$ make db-migrate-up
+$ make db-import-seed 
 ```
