@@ -36,7 +36,8 @@ func (r userRepository) GetAllUsers(ctx context.Context) ([]*entity.User, error)
 			userID,
 			u.Name,
 			u.Email,
-			u.Address,
+			u.Birthday,
+			u.Admin,
 		))
 	}
 
