@@ -14,8 +14,9 @@ services:
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - webapp-db-data:/var/lib/mysql
+      - ./db:/webapp/db
     ports:
-      - 3306:3306
+      - 3307:3306
 
 volumes:
   webapp-db-data:
