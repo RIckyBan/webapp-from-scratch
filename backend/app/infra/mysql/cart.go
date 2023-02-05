@@ -65,7 +65,7 @@ func (r *cartRepository) AddItem(ctx context.Context, item *entity.Item, quantit
 		Quantity: int(quantity),
 	}
 
-	err := cartModel.Upsert(ctx, r.db, boil.Infer())
+	err := cartModel.Upsert(ctx, r.db, boil.Infer(), boil.Infer())
 	if err != nil {
 		return err
 	}
