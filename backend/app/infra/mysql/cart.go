@@ -9,6 +9,7 @@ import (
 	"github.com/RIckyBan/webapp-from-scratch/backend/app/repository"
 	"github.com/RIckyBan/webapp-from-scratch/backend/db/models"
 	"github.com/oklog/ulid"
+	"github.com/volatiletech/sqlboiler/boil"
 )
 
 type cartRepository struct {
@@ -58,5 +59,16 @@ func (r *cartRepository) GetItems(ctx context.Context, userID ulid.ULID) ([]*ent
 }
 
 func (r *cartRepository) AddItem(ctx context.Context, item *entity.Item, quantity int64) error {
+	cartModel := models.Cart{
+		ID:       item.ID.String(),
+		PhoneID:  item.ID.String(),
+		Quantity: int(quantity),
+	}
+
+	err := cartModel.Upsert(ctx, r.db, boil.Infer())
+	if err != nil {
+		return err
+	}
+
 	return nil
 }
