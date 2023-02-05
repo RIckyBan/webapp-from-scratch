@@ -8,6 +8,6 @@ import (
 )
 
 type CartRepository interface {
-	GetItems(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error)
-	AddItem(ctx context.Context, item *entity.Item, quantity int64) error
+	GetAllItems(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error)
+	AddItem(ctx context.Context, itemID ulid.ULID, quantity int64) error
 }

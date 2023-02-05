@@ -20,7 +20,7 @@ func NewCartRepository(db *sql.DB) repository.CartRepository {
 	return &cartRepository{db: db}
 }
 
-func (r *cartRepository) GetItems(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error) {
+func (r *cartRepository) GetAllItems(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error) {
 	var itemEntities []*entity.Item
 
 	items, err := models.Phones().All(ctx, r.db)
@@ -58,10 +58,10 @@ func (r *cartRepository) GetItems(ctx context.Context, userID ulid.ULID) ([]*ent
 	return itemEntities, nil
 }
 
-func (r *cartRepository) AddItem(ctx context.Context, item *entity.Item, quantity int64) error {
+func (r *cartRepository) AddItem(ctx context.Context, itemID ulid.ULID, quantity int64) error {
 	cartModel := models.Cart{
-		ID:       item.ID.String(),
-		PhoneID:  item.ID.String(),
+		ID:       common.GenerateULID().String(),
+		PhoneID:  itemID.String(),
 		Quantity: int(quantity),
 	}
 

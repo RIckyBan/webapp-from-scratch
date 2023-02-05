@@ -9,3 +9,7 @@ func ParseULID(s string) ulid.ULID {
 	}
 	return str
 }
+
+func GenerateULID() ulid.ULID {
+	return ulid.MustNew(ulid.Now(), nil)
+}
