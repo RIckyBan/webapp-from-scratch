@@ -9,7 +9,7 @@ import (
 	"github.com/RIckyBan/webapp-from-scratch/backend/app/repository"
 	"github.com/RIckyBan/webapp-from-scratch/backend/db/models"
 	"github.com/oklog/ulid"
-	"github.com/volatiletech/sqlboiler/boil"
+	"github.com/volatiletech/sqlboiler/v4/boil"
 )
 
 type cartRepository struct {
