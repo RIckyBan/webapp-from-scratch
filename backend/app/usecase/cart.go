@@ -12,8 +12,8 @@ type CartService struct {
 	cartRepo repository.CartRepository
 }
 
-func NewCartService() *CartService {
-	return &CartService{}
+func NewCartService(cartRepo repository.CartRepository) *CartService {
+	return &CartService{cartRepo: cartRepo}
 }
 
 func (s *CartService) GetAllItemsInCart(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error) {
@@ -25,8 +25,8 @@ func (s *CartService) GetAllItemsInCart(ctx context.Context, userID ulid.ULID) (
 	return items, nil
 }
 
-func (s *CartService) AddItemToCart(ctx context.Context, itemID ulid.ULID, quantity int64) error {
-	err := s.cartRepo.AddItem(ctx, itemID, quantity)
+func (s *CartService) AddItemToCart(ctx context.Context, userID ulid.ULID, itemID ulid.ULID, quantity int) error {
+	err := s.cartRepo.AddItem(ctx, userID, itemID, quantity)
 	if err != nil {
 		return err
 	}

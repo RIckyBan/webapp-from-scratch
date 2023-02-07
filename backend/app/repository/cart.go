@@ -9,5 +9,5 @@ import (
 
 type CartRepository interface {
 	GetAllItems(ctx context.Context, userID ulid.ULID) ([]*entity.Item, error)
-	AddItem(ctx context.Context, itemID ulid.ULID, quantity int64) error
+	AddItem(ctx context.Context, userID ulid.ULID, itemID ulid.ULID, quantity int) error
 }

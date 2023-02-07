@@ -1,15 +1,22 @@
 package common
 
-import "github.com/oklog/ulid"
+import (
+	"math/rand"
+	"time"
 
-func ParseULID(s string) ulid.ULID {
+	"github.com/oklog/ulid"
+)
+
+func ParseULID(s string) (ulid.ULID, error) {
 	str, err := ulid.Parse(s)
 	if err != nil {
-		panic(err)
+		return ulid.ULID{}, err
 	}
-	return str
+	return str, nil
 }
 
 func GenerateULID() ulid.ULID {
-	return ulid.MustNew(ulid.Now(), nil)
+	t := time.Now()
+	entropy := ulid.Monotonic(rand.New(rand.NewSource(t.UnixNano())), 0)
+	return ulid.MustNew(ulid.Now(), entropy)
 }
