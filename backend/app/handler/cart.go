@@ -1,7 +1,6 @@
 package handler
 
 import (
-	"errors"
 	"net/http"
 
 	"github.com/RIckyBan/webapp-from-scratch/backend/app/common"
@@ -20,7 +19,10 @@ func NewCartHandler(usecase *usecase.CartService) *cartHandler {
 func (h *cartHandler) HandleGetAllItemsInCart(c echo.Context) error {
 	userID, err := common.ParseULID(c.QueryParam("userID"))
 	if err != nil {
-		return errors.New("invalid user id")
+		return c.JSON(http.StatusBadRequest, &Response{
+			Message: "invalid user id",
+			Data:    nil,
+		})
 	}
 
 	items, err := h.usecase.GetAllItemsInCart(c.Request().Context(), userID)
