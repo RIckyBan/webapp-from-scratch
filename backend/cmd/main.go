@@ -37,7 +37,7 @@ func main() {
 
 	// cart
 	e.GET("/cart/items", ch.HandleGetAllItemsInCart)
-	e.POST("/cart/add", ch.HandleAddItemToCart)
+	e.POST("/cart/add-item", ch.HandleAddItemToCart)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":5001"))
