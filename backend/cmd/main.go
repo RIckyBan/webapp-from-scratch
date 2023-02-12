@@ -22,11 +22,22 @@ func main() {
 	}
 
 	ur := mysql.NewUserRepository(db)
-	uu := usecase.NewAdminService(ur)
-	ah := handler.NewAdminHandler(uu)
+	cr := mysql.NewCartRepository(db)
+
+	// usecase
+	au := usecase.NewAdminService(ur)
+	cu := usecase.NewCartService(cr)
+
+	// handler
+	ah := handler.NewAdminHandler(au)
+	ch := handler.NewCartHandler(cu)
 
 	// admin
 	e.GET("/admin/users", ah.HandleGetAllUsers)
+
+	// cart
+	e.GET("/cart/items", ch.HandleGetAllItemsInCart)
+	e.POST("/cart/add-item", ch.HandleAddItemToCart)
 
 	// Start server
 	e.Logger.Fatal(e.Start(":5001"))
